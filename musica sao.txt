@@ -1,0 +1,61 @@
+					MUSICA DE SWORD ART ONLINE
+
+
+temp 1
+	aincrad
+		op: _lisa - crosing field
+		en: _haruka - ユメセカイ
+	
+	alfheim
+		op: _eir aoi - innocense
+		en: _luna - overfly
+
+temp 2
+	ggo
+		op: _eir aoi - ignite
+		en: _luna - startear
+	
+	calibur
+		op: _haruka - courage
+		en: _lisa - no more time machine
+
+	mother`s rosario
+		op: _haruka - courage
+		en: _lisa - shirushi
+
+ordinal
+	musica
+		_lisa - catch the moment
+		_sakaya - ubiquito us db
+		_sakaya - smile for you
+		_sakaya - longing
+		_sakaya - delete
+		_sakaya - break beat bark
+
+alicization
+	parte 1
+		op: _lisa - adamas
+		en: _eir aoi - iris
+
+	parte 2
+		op: _asca - resister
+		en: _reona - forget me not
+
+war of underworld
+	parte 1
+		op: _haruka - resolution
+		en: _lisa - unlasting
+
+	parte 2
+		op: _reona - anima
+		en: _eir aoi - i will
+
+
+progressive
+	musica
+		_lisa - yuke (fin de la pelicula)
+		_eir aoi - shinzou
+
+
+
+

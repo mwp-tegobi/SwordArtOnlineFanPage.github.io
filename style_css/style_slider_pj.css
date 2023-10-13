@@ -1,0 +1,90 @@
+.slides-temp1-pj, .slides-temp2-pj, .slides-ordinal-pj, .slides-alicization-pj, .slides-underworld-pj, 
+.slides-progressive-pj {
+	/* background-color: red; */
+	height: 100px;
+	width: 280px;
+	margin: 2px;
+	display: flex;
+	align-items: center;
+}
+
+.slide-cards-temp1, .slide-cards-temp2, .slide-cards-ordinal, .slide-cards-alicization, .slide-cards-underworld, 
+.slide-cards-progressive {
+	display: flex;
+	box-sizing: content-box;
+	position: relative;
+	width: 276px;
+	height: 74px;
+	border: 2px solid #fff;
+}
+
+.slide-cards-temp1:hover, .slide-cards-temp2:hover, .slide-cards-ordinal:hover, .slide-cards-alicization:hover, 
+.slide-cards-underworld:hover, .slide-cards-progressive:hover {
+	transform: scale(1.05);
+	z-index: 15;
+	border: 2px solid #00B3FF;
+}
+
+.mod-img-temp1, .mod-img-temp2, .mod-img-ordinal, .mod-img-alicization, .mod-img-underworld, .mod-img-progressive {
+	display: block;
+	width: 276px;
+	height: 74px;
+}
+.controler{
+	width: calc(280px + 44px);
+	height: 60px;
+	position: absolute;
+	visibility: hidden;
+	z-index: 70;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.prev-btn1::before, .prev-btn2::before, .prev-btn3::before, .prev-btn4::before, .prev-btn5::before, .prev-btn6::before {
+	content: "<";
+}
+.next-btn1::before, .next-btn2::before, .next-btn3::before, .next-btn4::before, .next-btn5::before, .next-btn6::before {
+	content: ">";
+}
+.next-btn1 , .next-btn2, .next-btn3, .next-btn4, .next-btn5, .next-btn6 {
+	cursor: pointer;
+	font-size: 30px;
+	padding: auto;
+	color: #000;
+	visibility: visible;
+	width: 20px;
+	height: 40px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, .8);
+	border: 1px solid #000;
+}
+.prev-btn1, .prev-btn2, .prev-btn3, .prev-btn4, .prev-btn5, .prev-btn6 {
+	cursor: pointer;
+	font-size: 30px;
+	visibility: visible;
+	color: #000;
+	width: 20px;
+	height: 40px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, .8);
+	border: 1px solid #000;
+}
+.nombres-pj {
+	position: absolute;
+	display: inline-block;
+	background-color: transparent;
+	color: #fff;
+	left: 89px;
+	top: 22px;
+	padding-left: 6px;
+	border-left: 2px solid #fff;
+	cursor: pointer;
+}
+.nombres-pj:hover {
+	color: #00B3FF;
+	border-right: 2px solid #00B3FF;
+	border-left: 2px solid transparent;
+	left: 89px;
+	padding-right: 6px;
+	transition: all .2s ease-in;
+}

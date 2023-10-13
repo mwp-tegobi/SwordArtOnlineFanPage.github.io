@@ -1,0 +1,359 @@
+.container-music {
+	margin: 4px;
+	color: #000;
+	width: 200px;
+	min-width: 180px;
+	height: 262px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 5px 0px var(--color_000);
+}
+.container-video {
+	margin: 4px;
+	color: var(--color_000);
+	width: 400px;
+	min-width: 180px;
+	height: 262px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 5px 0px var(--color_000);
+}
+#container-video-temp2{
+	width: 300px;
+	height: 262px;
+}
+
+
+
+/* -----------------------------------------------	descripcion del container music  ------------------------------------ */
+.container-music_name{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	background-color: var(--color_c1c1c1);
+	z-index: 70;
+	border-bottom: 1px solid var(--color_000);
+	box-shadow: 0px 1px 3px 0px var(--color_000);
+}
+.name_cancion {
+	text-align: center;
+	font-size: 22px;
+	padding-top: 6px;
+	background-color: transparent;
+}
+.container-music_spin {
+	position: relative;
+	width: 100%;
+	height: 170px;
+	background-color: var(--color_d3d3d3);
+	z-index: 60;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.container-music_controller {
+	display: flex;
+	flex-direction: row;
+	border-top: 1px solid var(--color_000);
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: var(--color_c1c1c1);
+	z-index: 70;
+	box-shadow: 0px -1px 3px 0px var(--color_000);
+}
+
+.spin-img, .spin-img2, .spin-img3, .spin-img4, .spin-img5, .spin-img6, .spin-img7 , .spin-img8, .spin-img9, .spin-img10, 
+.spin-img11, .spin-img12, .spin-img13, .spin-img14, .spin-img15, .spin-img16, .spin-img17, .spin-img18, .spin-img19, 
+.spin-img20, .spin-img21, .spin-img22, .spin-img23, .spin-img24, .spin-img25 {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	background-image: url(../imagenes/lisa-crossing-field-op.png);
+	background-size: cover;
+	border-radius: 50%;
+	margin: auto;
+	margin-top: 8px;
+	border: 2px solid var(--color_daa520);
+	box-shadow: 0px 0px 4px 2px var(--color_000);
+}
+.spin-img2 {background-image: url(../imagenes/eir-aoi-innocense-op.png);}
+.spin-img3 {background-image: url(../imagenes/haruka-yumesekai-ed.png);}
+.spin-img4 {background-image: url(../imagenes/luna-overfly-ed.png);}
+.spin-img5 {background-image: url(../imagenes/eir-aoi-ignite-op.png);}
+.spin-img6 {background-image: url(../imagenes/haruka-courage-op.png);}
+.spin-img7 {background-image: url(../imagenes/luna-startear-en.png);}
+.spin-img8 {background-image: url(../imagenes/lisa-nomoretimemachine-en.png);}
+.spin-img9 {background-image: url(../imagenes/lisa-shirushi-en.png);}
+.spin-img10 {background-image: url(../imagenes/lisa-catchthemoment-ordinal.png);}
+.spin-img11 {background-image: url(../imagenes/sakaya-1.png);}
+.spin-img12 {background-image: url(../imagenes/sakaya-2.png);}
+.spin-img13 {background-image: url(../imagenes/sakaya-3.png);}
+.spin-img14 {background-image: url(../imagenes/sakaya-4.png);}
+.spin-img15 {background-image: url(../imagenes/sakaya-5.png);}
+.spin-img16 {background-image: url(../imagenes/lisa-adamas-op.png);}
+.spin-img17 {background-image: url(../imagenes/asca-resister-op.png);}
+.spin-img18 {background-image: url(../imagenes/eir-aoi-iris.png);}
+.spin-img19 {background-image: url(../imagenes/reona-forgetmenot.png);}
+.spin-img20 {background-image: url(../imagenes/haruka-resolution-opening.png);}
+.spin-img21 {background-image: url(../imagenes/reona-anima-opening.png);}
+.spin-img22 {background-image: url(../imagenes/lisa-unlasting-ending.png);}
+.spin-img23 {background-image: url(../imagenes/eir-aoi-iwill-ending.png);}
+.spin-img24 {background-image: url(../imagenes/eir-aoi-shinzou.png);}
+.spin-img25 {background-image: url(../imagenes/lisa-yuke-en.png);}
+
+@keyframes giro-musica {
+	0%{transform: rotateZ(0deg);}
+	100%{transform: rotateZ(360deg);}
+}
+.punto0 {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background-color: var(--color_000);
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: 2px solid var(--color_daa520);
+	top: 45px;
+	left: 45px;
+}
+.pinche {
+	position: absolute;
+	width: 110px;
+	height: 14px;
+	top: 62px;
+	left: -36.3px;
+	background-color: transparent;
+	background-image: url(../imagenes/pinche.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition: 1s linear;
+	transform: rotateZ(-87deg) translate(0px, 0px);
+}
+@keyframes animacion-pinche-1 {
+	 0%{} /*el inicio no lo pongo, lo puse en .pinche */
+	25%{transform: rotateZ(-79.5deg) translate(.6px, 7.5px);}
+	50%{transform: rotateZ(-72deg)  translate(2.3px, 15px);}
+	75%{transform: rotateZ(-64.5deg) translate(5px, 22.3px);}
+	100%{transform: rotateZ(-57deg) translate(8.3px, 28.8px);}
+}
+@keyframes animacion-pinche-1-back {
+	0%{transform: rotateZ(-57deg) translate(8.3px, 28.8px);}
+	25%{transform: rotateZ(-64.5deg) translate(5px, 22.3px);}
+	50%{transform: rotateZ(-72deg)  translate(2.3px, 15px);}
+	75%{transform: rotateZ(-79.5deg) translate(.6px, 7.5px);}
+	100%{transform: rotateZ(-87deg) translate(0px, 0px);}
+}
+.contiene-pinche {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	background-color: var(--color_9d9d9d);
+	border: 1px solid var(--color_000);
+	border-radius: 15%;
+	top: 120px;
+	left: 9px;
+	transition: 1s linear;
+	transform: rotate(0deg);
+	animation: animacionpinche2 1s linear infinite;
+}
+.hide {	display: none;}
+
+.boton-play-pausa, .boton-stop {
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 3px 1px var(--color_000);
+	background-color: var(--color_008CC4);
+	cursor: pointer;
+	border: 0px;
+}
+.boton-play-pausa:hover, .boton-stop:hover, .volumen-container:hover {	background-color: var(--color_00709d);}
+
+.volumen-container {
+	margin-top: 10px;
+	margin-left: 10px;
+	display: flex;
+	flex-direction: row;
+	width: 100px;
+	height: 30px;
+	border-radius: 100px;
+	box-shadow: 0px 0px 3px 1px var(--color_000);
+	background-color: var(--color_008CC4);
+	cursor: pointer;
+}
+.play-icon, .pause-icon {
+	background-color: transparent;
+	color: var(--color_ffffff);
+	font-size: 20px;
+	transform: translateY(-2px);
+	margin-left: 4.5px;
+}
+.pause-icon {	margin-left: 1px;}
+
+.stop-icon, .volume-icon, .mute-icon {
+	background-color: transparent;
+	color: var(--color_ffffff);
+	font-size: 20px;
+	margin-top: 5px;
+	margin-left: 8px;
+}
+.stop-icon {
+	transform: translateY(-2px);
+	margin-left: 1px;
+}
+
+.volume-icon, .mute-icon {
+	background-color: transparent;
+	color: var(--color_ffffff);
+	font-size: 20px;
+	margin-top: 5px;
+	margin-left: 8px;
+}
+.mute-icon {	margin-right: 2.5px;}
+
+.tiempo-transcurrido {
+	width: 200px;
+	height: 30px;
+	background-color: transparent;
+	display: flex;
+	flex-direction: row;
+}
+.progress-container {
+	margin-top: 18px;
+	width: 134px;
+	height: 2px;
+	background: var(--color_00a3e3);
+	border: 2px solid var(--color_005476);
+	border-radius: 5px;
+	cursor: pointer;
+}
+.progress-container-music {
+	margin-top: 18px;
+	width: 134px;
+	height: 2px;
+	background: var(--color_00a3e3);
+	border: 2px solid var(--color_005476);
+	border-radius: 5px;
+}
+.progressMusic {
+	background-color: var(--color_004762);
+    width: 0;
+    height: 100%;
+}
+.current-time, .total-duration {
+	font-size: 12px;
+	width: 25px;
+	margin-left: 4px;
+	margin-right: 4px;
+	padding-top: 13px;
+	background-color: transparent;
+}
+ .volume-slider {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin-top: 13px;
+	margin-left: 4px;
+	width: 56px;
+	height: 2px;
+	background: var(--color_ffffff);
+	border: 1px solid var(--color_005476);
+	border-radius: 5px;
+	cursor: pointer;
+}
+.volume-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	width: 12px;
+	height: 12px;
+	background: var(--color_ffffff);
+	border: 1px solid var(--color_000);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+
+
+
+
+/* -----------------------------------------------	descripcion del container video  ------------------------------------ */
+.container-video-spin, .container-video-spin2, .container-video-spin3, .container-video-spin3-otro,
+.container-video-spin4, .container-video-spin4-otro, .container-video-spin5, .container-video-spin6, .container-video-spin7, 
+.container-video-spin8, .container-video-spin9, .container-video-spin10 {
+	position: relative;
+	width: 100%;
+	height: 170px;
+	background-color: var(--color_d3d3d3);
+	z-index: 60;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.container-video-spin {background-image: url(../imagenes/fondo-clip-video-op.png);}
+.container-video-spin2 {background-image: url(../imagenes/fondo-clip-video2-op.png);}
+.container-video-spin3 {background-image: url(../imagenes/fondo-clip-video3-op.png);}
+.container-video-spin3-otro {background-image: url(../imagenes/fondo-clip-video3-otro-op.png);}
+.container-video-spin4 {background-image: url(../imagenes/fondo-clip-video4-op.png);}
+.container-video-spin4-otro {background-image: url(../imagenes/fondo-clip-video4-otro-op.png);}
+.container-video-spin5 {background-image: url(../imagenes/fondo-clip-video5-op.png);}
+.container-video-spin6 {background-image: url(../imagenes/fondo-clip-video6-op.png);}
+.container-video-spin7 {background-image: url(../imagenes/fondo-clip-video7-op.png);}
+.container-video-spin8 {background-image: url(../imagenes/fondo-clip-video8-op.png);}
+.container-video-spin9 {background-image: url(../imagenes/fondo-clip-video9-op.png);}
+.container-video-spin10 {background-image: url(../imagenes/fondo-clip-video10-op.png);}
+
+.nombre-video-aincrad {
+	background-color: var(--color_dbdbdb80);
+	border: 2px solid var(--color_000);
+	margin: 0 0 0 50px;
+	height: 50px;
+	border-radius: 4px;
+	width: 140px;
+	padding: 6px 0px 0px 16px;
+	transform: skewX(-20deg);
+	transition: all .2s ease-in;
+}
+.nombre-video-aincrad:hover {
+	background-color: var(--color_54545499);
+}
+.nombre-video-aincrad > p {
+	text-align: center;
+	cursor: pointer;
+	font-size: 26px;
+	display: inline-block;
+	color: var(--color_000);
+	transform: skewX(20deg);
+	background-color: transparent;
+	border-top: 2px solid var(--color_008CC4);
+	border-bottom: 2px solid transparent;
+	padding: 4px 8px 0px 8px;
+	transition: all .4s ease-in;
+}
+.container-video-name {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	background-color: var(--color_c1c1c1);
+	z-index: 70;
+	border-bottom: 1px solid var(--color_000);
+	box-shadow: 0px 1px 3px 0px var(--color_000);
+}
+.container-video-boton {
+	display: flex;
+	flex-direction: row;
+	border-top: 1px solid var(--color_000);
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: var(--color_c1c1c1);
+	z-index: 70;
+	box-shadow: 0px -1px 3px 0px var(--color_000);
+}

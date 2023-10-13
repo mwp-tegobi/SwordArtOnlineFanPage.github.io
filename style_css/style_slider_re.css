@@ -1,0 +1,200 @@
+/* todo sobre reparto actores */
+.container1-temp1-re, .container2-temp2-re, .container3-ordinal-re, .container4-alicization-re, .container5-underworld-re,
+.container6-progressive-re {
+	position: absolute;
+	width: 1414px;
+	height: 270px;
+	display: flex;
+	left: 13px;
+	background-color: transparent;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	z-index: -40;
+	transform: translatey(-30000px);
+}
+.container-voice-actor {
+	position: relative;
+	z-index: 200;
+	color: #000;
+	width: 200px;
+	height: 262px;
+	margin: 2px;
+	background-color: red;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 5px 0px #000;
+}
+.name_reparto {
+	text-align: center;
+	font-size: 20px;
+	padding-top: 7px;
+	background-color: transparent;
+}
+.name_reparto-especial {
+	text-align: center;
+	font-size: 17px;
+	padding-top: 7px;
+	background-color: transparent;
+}
+.container-imagen-reparto {
+	position: relative;
+	width: 100%;
+	height: 170px;
+	background-color: #d3d3d3;
+	z-index: 60;
+}
+.img-reparto-general {
+	background-size: cover;
+}
+.img-reparto-doble {
+	position: relative;
+	background-size: cover;
+	opacity: 1;
+	animation: imagen-reparto-display 3s infinite linear forwards;
+}
+.oculta {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 170px;
+	transform: translateY(-174px);
+	background-size: cover;
+	opacity: 0;
+	animation: imagen-reparto-hide 3s infinite linear forwards;
+}
+
+@keyframes imagen-reparto-display {
+	0%{opacity: 1;}
+	45%{opacity: 1;}
+	55%{opacity: 0;}
+	100%{opacity: 0;}
+}
+@keyframes imagen-reparto-hide {
+	0%{opacity: 0;}
+	45%{opacity: 0;}
+	55%{opacity: 1;}
+	100%{opacity: 1;}
+}
+
+
+.slides-temp1-re, .slides-temp2-re, .slides-ordinal-re, .slides-alicization-re, .slides-underworld-re, .slides-progressive-re {
+	background-color: transparent;
+	position: relative;
+	height: 270px;
+	width: 204px;
+	margin: 2px;
+	display: flex;
+	align-items: center;
+}
+
+.container-reparto-name {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	background-color: #C1C1C1;
+	z-index: 70;
+	border-bottom: 1px solid #000;
+	box-shadow: 0px 1px 3px 0px #000;
+}
+.name_cancion {
+	text-align: center;
+	font-size: 22px;
+	padding-top: 6px;
+	background-color: transparent;
+}
+
+.container-link-wiki {
+	text-align: center;
+	border-top: 1px solid #000;
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: #C1C1C1;
+	z-index: 70;
+	box-shadow: 0px -1px 3px 0px #000;
+}
+.link-wiki {
+	display: block;
+	font-size: 18px;
+	color: #fff;
+	background-color: #008CC4;
+	margin-top: 13px;
+	margin-left: 60px;
+	height: 24px;
+	width: 80px;
+	border-radius: 50px;
+	box-shadow: 0px 0px 3px 0px #000;
+}
+.link-wiki:hover {
+	background-color: #00709d;
+}
+.link-wiki-especial {
+	display: block;
+	font-size: 18px;
+	color: #fff;
+	background-color: #008CC4;
+	margin-top: 13px;
+	margin-left: 60px;
+	height: 24px;
+	width: 80px;
+	border-radius: 50px;
+	box-shadow: 0px 0px 3px 0px #000;
+}
+.link-wiki-especial:hover {
+	background-color: #00709d;
+}
+.link-doble-info {
+	display: inline-block;
+	font-size: 18px;
+	color: #fff;
+	background-color: #008CC4;
+	margin-top: 13px;
+	margin-right: 2px;
+	height: 24px;
+	width: 80px;
+	border-radius: 50px;
+	box-shadow: 0px 0px 3px 0px #000;
+}
+
+
+
+.controler-reparto {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	transform: translate(0px, -5px);
+	width: 224px;
+	height: 40px;
+	z-index: 190;
+}
+.prev-btnre1::before, .prev-btnre2::before, .prev-btnre3::before, .prev-btnre4::before, .prev-btnre5::before, .prev-btnre6::before {
+	content: "<";
+}
+.next-btnre1::before, .next-btnre2::before, .next-btnre3::before, .next-btnre4::before, .next-btnre5::before, .next-btnre6::before {
+	content: ">";
+}
+
+
+.next-btnre1 , .next-btnre2, .next-btnre3, .next-btnre4, .next-btnre5, .next-btnre6,
+.prev-btnre1, .prev-btnre2, .prev-btnre3, .prev-btnre4, .prev-btnre5, .prev-btnre6  {
+	cursor: pointer;
+	font-size: 30px;
+	padding: auto;
+	color: #000;
+	/* position: absolute; */
+	z-index: 90;
+	width: 20px;
+	height: 60px;
+	/* transform: translate(0px,0px); */
+	border-radius: 5px;
+	background: rgba(255, 255, 255, .8);
+	border: 1px solid #000;
+}
+
+.prev-btnre1, .prev-btnre2, .prev-btnre3, .prev-btnre4, .prev-btnre5, .prev-btnre6 {
+	top: 45px;
+	right: 548px;
+}
+
+
