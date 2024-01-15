@@ -31,7 +31,7 @@
 	.container-video-spin8, .container-video-spin9, .container-video-spin10 {
 		align-items: center;
 	}
-	.nombre-video-aincrad {		margin: 0px;}
+	.nombre-video-aincrad {		margin: 15px;}
 	.title_text_temps{		font-size: 30px;}
 
 } 
@@ -91,15 +91,16 @@
 		width: 90%;
 		height: 7px;
 	}
-	.volume-btn-video, .volume-mute-video  {
+	.container_volume-btn-video{
 		box-sizing: border-box;
-		font-size: 24px;
-		border-radius: 34% 8px 8px 34%;
-		padding-top: 4px;
+		border-radius: 16px 8px 8px 16px;
 		margin: 3px 4px 0px 5px;
 		width: 50px;
 		height: 34px;
-		padding-left: 7px;
+	}
+	.volume-btn-video, .volume-mute-video {
+		font-size: 22px;
+		padding: 6px 0 0 10px;
 	}
 	.boton-play-pausa-video, .boton-reset-video, .boton-fullscreen-video {
 		width: 30px;

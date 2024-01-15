@@ -856,377 +856,517 @@ var contenedorEventoParaVideos = document.querySelectorAll(".evento-clip-sao");
 var contenedorInfo2 = document.querySelector(".contenedor-info2");
 let container_body = document.querySelector(".container_body")
 
+
+// videos_json_prueba = [
+// 	{
+// 		"nombre_video": "Opening - Arco Aincrad",
+// 		"id_container_video": "aincradserie_Info",
+// 		"src_video": "videos/temp-1/aincrad/opening/Sao-Crossing Field-Opening.mp4",
+// 		"final_duration": "01:29"
+// 	},
+// 	{
+// 		"nombre_video": "Opening - Arco Aincrad",
+// 		"id_container_video": "clipcrosing_Info",
+// 		"src_video": "videos/temp-1/aincrad/opening/Sao-Crossing Field-Opening-Clip.mp4",
+// 		"final_duration": "04:07"
+// 	},
+// 	{
+// 		"nombre_video": "Opening - Arco Alfheim",
+// 		"id_container_video": "alfheimserie_Info",
+// 		"src_video": "videos/temp-1/alfheim/opening/Sao-Innocence-Opening.mp4",
+// 		"final_duration": "01:31"
+// 	},
+// 	{
+// 		"nombre_video": "Opening - Arco Alfheim",
+// 		"id_container_video": "clipinnocense_Info",
+// 		"src_video": "videos/temp-1/alfheim/opening/Sao-Innocence-Opening-Clip.mp4",
+// 		"final_duration": "05:02"
+// 	}
+// ]
+
+
+
+// esto es el click en cada texto para despues desplegar el video
 contenedorEventoParaVideos.forEach((elementoVideo,indexVideo) =>{
 	elementoVideo.addEventListener("click", eventoclickAbrir_2, false);
 });
 
 function eventoclickAbrir_2(e) {
+
+	console.log(e.target)
+	console.log(e.currentTarget)
+	console.log(e.target !== e.currentTarget)
+
 	if(e.target !== e.currentTarget){
 		var clickedItem = e.target.id;
-		let contenedorEventoClick1 = contenedorEventoParaVideos;
-		let contenedorInfoHijos = contenedorInfo2.children;
-		let aString = clickedItem.toString();
-		
-		const aHacerClick = document.querySelectorAll('.desplegar_info2');
 
-		aHacerClick.forEach((elemento1,index1) =>{
-			let cortar = elemento1.id;
-			const aStringInfo = cortar.toString();
-			let res = aStringInfo.includes(aString);
-			if(res == true) {
-				contenedorInfoHijos[index1].style.display = 'flex';
-				container_body.style.overflowY = "hidden";
+		let contenedorInfoHijos = contenedorInfo2.children;
+		
+		videos_json.forEach((el_json,ind_json) =>{
+			let id_buscado_json = el_json.id_container_video;
+			
+			if(id_buscado_json === clickedItem){
+
+				contenedorInfo2.innerHTML = `
+
+				<div class="info-container-video desplegar_info2" id="${el_json.id_container_video}">
+					<div class="name-pj">
+						<i class="fa-solid fa-spinner icono-video-temp"></i>
+						<p>${el_json.nombre_video}</p>
+						<i class="fa-solid fa-spinner icono-video-temp"></i>
+					</div>
+					<div class="info-pj">
+						<div class="panel-der">
+							<div class="container-botones">
+								<div class="boton-play-pausa-video">
+									<i class="fa-solid fa-play play-btn-video"></i>
+									<i class="fa-solid fa-pause hide pause-btn-video"></i>
+								</div>
+								<div class="boton-reset-video">
+									<i class="fa-solid fa-rotate-right reset-btn-video"></i>
+								</div>
+								<div class="boton-fullscreen-video">
+									<i class="fa-solid fa-expand screen-btn-video"></i>
+								</div>
+							</div>
+						</div>
+						<div class="panel-medio">
+							<video poster="./imagenes/img_loading_video.png" class="video-op-temp videos_todos">
+								<source src="${el_json.src_video}" type="video/mp4">
+							</video>
+							<div class="tiempo-transcurrido_video">
+								<span  class="current-time_video tiempo00_video">00:00</span>
+								<div class="progress-container-video">
+									<section class="progressCon_Video"></section>	
+								</div>
+								<div class="total-duration_video">${el_json.final_duration}</div>
+							</div>
+						</div>
+						<div class="panel-izq">
+							<div class="container-volumen-video">
+								<input type="range" min="0" max="100" value="100" class="volume-slider-video">
+								<div class="container_volume-btn-video">
+									<i class="fa-solid fa-volume-high volume-btn-video"></i>
+									<i class="fa-solid fa-volume-xmark volume-mute-video hide"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="boton-pj">
+						<div class="img-close-info2 cerrar_info2"></div>
+					</div>
+				</div>
+
+				`
+				contenedorInfoHijos[0].style.display = 'flex';
+				// container_body.style.overflowY = "hidden";
+				// contenedorInfoHijos[index1].style.display = 'flex';
+			}
+			else{
+				console.log("nop")
+			}
+		})
+
+
+		//    ------------------------------------------------- videos con cada container
+		const videosTodos = document.querySelector('.videos_todos');
+		const videosScreen = document.querySelector('.video-op-temp');
+		const playPauseContainerVideo = document.querySelector('.boton-play-pausa-video');
+		const resetBtnVideo = document.querySelector('.reset-btn-video');
+
+		const playBtnVideo = document.querySelector('.play-btn-video');
+		const pauseBtnVideo = document.querySelector('.pause-btn-video');
+		const fullScreenVideo = document.querySelector('.boton-fullscreen-video');
+
+		const progressContainerVideo = document.querySelector('.progress-container-video');
+		const progressVideoBlue = document.querySelector('.progressCon_Video');
+
+
+		
+
+		const volumeSliderVideo = document.querySelector('.volume-slider-video');
+		const containerVolumeBTN = document.querySelector('.container_volume-btn-video');
+		const volumeMuteIconVideo = document.querySelector('.volume-mute-video');
+		const volumeHighIconVideo = document.querySelector('.volume-btn-video');
+
+		const currTimeVideo = document.querySelector('.tiempo00_video');
+
+
+		
+		playPauseContainerVideo.addEventListener("click", () => {
+			console.log("clickeado el boton play-pause") 
+
+			if (videosTodos.paused) {
+				videosTodos.play();
+				playBtnVideo.classList.toggle("hide");
+				pauseBtnVideo.classList.toggle("hide");
+			}
+			else {
+				videosTodos.pause();
+				playBtnVideo.classList.toggle("hide");
+				pauseBtnVideo.classList.toggle("hide");
 			}
 		});
+		
+		videosTodos.addEventListener("ended", () => {
+			console.log("video terminado")
+			playBtnVideo.classList.toggle("hide");
+			pauseBtnVideo.classList.toggle("hide");
+			videosTodos.currentTime = 0;
+		});
+		
+		fullScreenVideo.addEventListener("click", () => {
+			if(videosTodos.requestFullscreen){		videosTodos.requestFullscreen();}
+		});
+
+		videosScreen.addEventListener("dblclick", () => {
+			if(videosTodos.requestFullscreen){		videosTodos.requestFullscreen();}
+		});
+
+		resetBtnVideo.addEventListener("click", () => {
+			if(videosTodos.paused){
+				videosTodos.currentTime = 0;
+				videosTodos.pause();				
+			}
+			else if(videosTodos.play){
+				videosTodos.currentTime = 0;
+				videosTodos.pause();
+				
+				playBtnVideo.classList.toggle("hide");
+				pauseBtnVideo.classList.toggle("hide");
+			}
+		})
+
+		progressContainerVideo.addEventListener('click', (event) => {
+			const totalWidth = progressContainerVideo.offsetWidth;
+			const elementoVideoBlueWidth = event.offsetX;
+			const current = (elementoVideoBlueWidth / totalWidth) * videosTodos.duration;
+			videosTodos.currentTime = current;			
+		});
+
+		// progressVideoBlue.forEach ((elementoVideoBlue, indexVideoBlue) => { //update del cambio en la barra de tiempo
+		// 	progressVideoBlue.addEventListener("timeupdate", (event) => {
+		// 		const {duration, currentTime} = event.target
+		// 		const percent = (currentTime / duration) * 100
+		// 		elementoVideoBlue.style.width = percent + "%" 
+		// 	})	
+		// });
+		
+
+
+		// update del cambio de tiempo (en el current time)
+		videosTodos.addEventListener("timeupdate", () => {
+			const currentTimeAudio = videosTodos.currentTime;
+			const durationAudio = videosTodos.duration;
+		
+			let progress1WidthVideo = (currentTimeAudio / durationAudio) * 100;
+
+			progressVideoBlue.style.width = `${progress1WidthVideo}%`;
+				
+			let currentMin = Math.floor(currentTimeAudio / 60);
+			let currentSec = Math.floor(currentTimeAudio % 60);
+			if(currentSec < 10){	currentSec = `0${currentSec}`;}
+			currTimeVideo.textContent = "0" + currentMin + ":" + currentSec;
+		})
+
+		// aca es el click al slider del volumen
+		volumeSliderVideo.addEventListener('change', () => {
+			videosTodos.volume = volumeSliderVideo.value / 100;
+
+			console.log(volumeSliderVideo.value)
+
+			if(videosTodos.volume == 0) {
+				videosTodos.muted = true;
+				volumeMuteIconVideo.classList.toggle("hide");
+				volumeHighIconVideo.classList.toggle("hide");
+			}
+			else{	
+				videosTodos.muted = false;
+			}
+
+			ultimo_vol = volumeSliderVideo.value ;
+			return ultimo_vol
+
+		})
+		
+
+		containerVolumeBTN.addEventListener("click", () => {
+			volumeMuteIconVideo.classList.toggle("hide");
+			volumeHighIconVideo.classList.toggle("hide");
+
+			// console.log(ultimo_vol)
+			
+			if(volumeMuteIconVideo.classList.contains("hide")){
+				console.log("lo teinee")
+				videosTodos.muted = false;
+				volumeSliderVideo.value = ultimo_vol;
+			}
+			else{
+				console.log("gola")
+				videosTodos.muted = true;
+				volumeSliderVideo.value = 0;
+			}	
+		})
 	}
-	e.stopPropagation();
+	
+	//  ------------------------------------- click para cerrar la info de video
+	const botonCerradoInfoVideo = document.querySelector(".cerrar_info2");
+
+	botonCerradoInfoVideo.addEventListener("click", () => {
+		let click_cerrar_video = document.querySelector('.desplegar_info2');
+		click_cerrar_video.style.display = 'none';
+		contenedorInfo2.innerHTML = ``;
+	})
 }
 
-//  ------------------------------------- click para cerrar cada info de pj
-const botonCerradoInfoVideo = document.querySelectorAll(".cerrar_info2");
-
-botonCerradoInfoVideo.forEach((elementoCerrado2,indexCerrado) =>{
-	elementoCerrado2.addEventListener("click", () => {
-		const aHacerClickCerrar = document.querySelectorAll('.desplegar_info2');
-
-		aHacerClickCerrar.forEach((elementoCloseInfo,indexCloseInfo) => {
-			if(indexCloseInfo == indexCerrado) {
-				elementoCloseInfo.style.display = 'none';
-				container_body.style.overflowY = "scroll";	
-				const videosTodos = document.querySelectorAll('.videos_todos');
-				
-				videosTodos.forEach((elementoVideos, indexVideos) =>{
-					if(indexVideos == indexCloseInfo){
-						if(elementoVideos.paused){}
-						else {
-							elementoVideos.pause();
-	
-							playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-								if(indexVideos == indexPlayBtnVideo){  elementoPlayBtnVideo.classList.toggle("hide");}
-							  })
-							  pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-								if(indexVideos == indexPauseBtnVideo){  elementoPauseBtnVideo.classList.toggle("hide");}
-							  })
-						}
-					}
-					else if (indexVideos == (indexCloseInfo + 1)){
-						if(elementoVideos.paused){}
-						else {
-							elementoVideos.pause();
-	
-							playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-								if(indexVideos == indexPlayBtnVideo){	elementoPlayBtnVideo.classList.toggle("hide");}
-							  })
-							  pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-								if(indexVideos == indexPauseBtnVideo){  elementoPauseBtnVideo.classList.toggle("hide");}
-							  })
-						}
-					}
-					else if (indexVideos == (indexCloseInfo + 2)){
-						if(elementoVideos.paused){}
-						else {
-							elementoVideos.pause();
-	
-							playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-								if(indexVideos == indexPlayBtnVideo){	elementoPlayBtnVideo.classList.toggle("hide");}
-							  })
-							  pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-								if(indexVideos == indexPauseBtnVideo){  elementoPauseBtnVideo.classList.toggle("hide");}
-							  })
-						}
-					}
-					else if (indexVideos == (indexCloseInfo + 3)){
-						if(elementoVideos.paused){}
-						else {
-							elementoVideos.pause();
-	
-							playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-								if(indexVideos == indexPlayBtnVideo){
-									elementoPlayBtnVideo.classList.toggle("hide");
-								}
-							  })
-							  pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-								if(indexVideos == indexPauseBtnVideo){
-									  elementoPauseBtnVideo.classList.toggle("hide");
-								}
-							  })
-						}
-					}
-				})
-			}
-		})		
-	})
-})
-
-
-
-//    ------------------------------------------------- videos con cada container
-const videosTodos = document.querySelectorAll('.videos_todos');
-const videosScreen = document.querySelectorAll('.video-op-temp');
-const playPauseContainerVideo = document.querySelectorAll('.boton-play-pausa-video');
-const resetBtnVideo = document.querySelectorAll('.reset-btn-video');
-
-const playBtnVideo = document.querySelectorAll('.play-btn-video');
-const pauseBtnVideo = document.querySelectorAll('.pause-btn-video');
-const fullScreenVideo = document.querySelectorAll('.boton-fullscreen-video');
-
-const progressContainerVideo = document.querySelectorAll('.progress-container-video');
-const progressVideoBlue = document.querySelectorAll('.progressCon_Video');
-
-const volumeSliderVideo = document.querySelectorAll('.volume-slider-video');
-const volumeMuteIconVideo = document.querySelectorAll('.volume-mute-video');
-const volumeHighIconVideo = document.querySelectorAll('.volume-btn-video');
-
-const currTimeVideo = document.querySelectorAll('.tiempo00_video');
-
-
-
-videosTodos.forEach((elementoVideos, indexVideos) =>{
-	var elementoVideosId = elementoVideos.id;
-
-	playPauseContainerVideo.forEach((elementoPlayPauseVideo, indexPlayPauseVideo) => {
-		elementoPlayPauseVideo.addEventListener("click", () => {
-			if(indexVideos == indexPlayPauseVideo){
-				if (elementoVideos.paused) {
-					elementoVideos.play();
-					playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-						if(indexVideos == indexPlayBtnVideo){
-							elementoPlayBtnVideo.classList.toggle("hide");
-						}
-					})
-					pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-						if(indexVideos == indexPauseBtnVideo){
-							elementoPauseBtnVideo.classList.toggle("hide");
-						}
-					})		
-				}
-				else {
-					elementoVideos.pause();	
-					playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-						if(indexVideos == indexPlayBtnVideo){
-							elementoPlayBtnVideo.classList.toggle("hide");
-						}
-					})
-					pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-						if(indexVideos == indexPauseBtnVideo){
-							elementoPauseBtnVideo.classList.toggle("hide");
-						}
-					})
-				}
-			}		
-		})
-	});
-
-	elementoVideos.addEventListener("ended", () => {
-		playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-			if(indexVideos == indexPlayBtnVideo){
-				elementoPlayBtnVideo.classList.toggle("hide");
-			}
-		})
-		pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-			if(indexVideos == indexPauseBtnVideo){
-				elementoPauseBtnVideo.classList.toggle("hide");
-			}
-		})		
-		elementoVideos.currentTime = 0;
-	});
-
-	fullScreenVideo.forEach((elemenetoFullScreen, indexFullScreen) => {
-		elemenetoFullScreen.addEventListener("click", () => {
-			if(indexVideos == indexFullScreen){
-				if(elementoVideos.requestFullscreen){
-					elementoVideos.requestFullscreen();
-				}
-			}
-		});
-	});
-
-	videosScreen.forEach((elemenetoHacerFullScreen, indexHacerFullScreen) => {
-		elemenetoHacerFullScreen.addEventListener("dblclick", () => {
-			if(indexVideos == indexHacerFullScreen){
-				if(elementoVideos.requestFullscreen){
-					elementoVideos.requestFullscreen();
-				}
-			}
-		})
-	});
-
-	resetBtnVideo.forEach((elementoResetVideo, indexResetVideo) => {
-		elementoResetVideo.addEventListener("click", () => {
-			if(indexVideos == indexResetVideo){
-				if(elementoVideos.paused){
-					elementoVideos.currentTime = 0;
-					elementoVideos.pause();
-					// playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-					// 	if(indexVideos == indexPlayBtnVideo){
-					// 		elementoPlayBtnVideo.classList.toggle("hide");
-					// 	}
-					// })
-					// pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-					// 	if(indexVideos == indexPauseBtnVideo){
-					// 		elementoPauseBtnVideo.classList.toggle("hide");
-					// 	}
-					// })
-
-					
-				}
-				else if(elementoVideos.play){
-					elementoVideos.currentTime = 0;
-					elementoVideos.pause();
-					
-					playBtnVideo.forEach((elementoPlayBtnVideo, indexPlayBtnVideo) =>{
-						if(indexVideos == indexPlayBtnVideo){
-							elementoPlayBtnVideo.classList.toggle("hide");
-						}
-					})
-					pauseBtnVideo.forEach((elementoPauseBtnVideo, indexPauseBtnVideo) =>{
-						if(indexVideos == indexPauseBtnVideo){
-							elementoPauseBtnVideo.classList.toggle("hide");
-						}
-					})
-				}
-			}
-		})	
-	});
-
-	progressContainerVideo.forEach ((elementoProgressVideo, indexProgressVideo) => {
-		elementoProgressVideo.addEventListener('click', (event) => {
-			if(indexVideos == indexProgressVideo) {
-				const totalWidth = elementoProgressVideo.offsetWidth
-
-				progressVideoBlue.forEach ((elementoVideoBlue, indexVideoBlue) => {
-					const elementoVideoBlueWidth = event.offsetX
-					const current = (elementoVideoBlueWidth / totalWidth) * elementoVideos.duration
-					elementoVideos.currentTime = current
-				})
-			}
-		})
-		
-	});	
-
-	progressVideoBlue.forEach ((elementoVideoBlue, indexVideoBlue) => { //update del cambio en la barra de tiempo
-		elementoVideos.addEventListener("timeupdate", (event) => {
-			if(indexVideos == indexVideoBlue) {
-				const {duration, currentTime} = event.target
-				const percent = (currentTime / duration) * 100
-				elementoVideoBlue.style.width = percent + "%" 
-			}
-		})	
-	});
-
-	videosTodos.forEach((elementoTimeUpdateVideo, indexTimeUpdateVideo) => {	// update del cambio de tiempo (en el current time)
-		elementoTimeUpdateVideo.addEventListener("timeupdate", () => {
-
-			if(indexVideos == indexTimeUpdateVideo) {
-				const currentTimeAudio = elementoTimeUpdateVideo.currentTime;
-
-				const durationAudio = elementoTimeUpdateVideo.duration;
-		
-				let progress1WidthVideo = (currentTimeAudio / durationAudio) * 100;
-
-
-				progressVideoBlue.forEach ((elementoVideoBlue, indexVideoBlue) => {
-					let progreso = elementoVideoBlue.id
-					if(indexVideos == indexVideoBlue) {
-						elementoVideoBlue.style.width = `${progress1WidthVideo}%`;
-					}	
-				})
-				currTimeVideo.forEach((elementoCurrTimeVideo, indexCurrTimeVideo) => {
-					if(indexVideos == indexCurrTimeVideo) {
-						let currentMin = Math.floor(currentTimeAudio / 60);
-						let currentSec = Math.floor(currentTimeAudio % 60);
-						if(currentSec < 10){
-						currentSec = `0${currentSec}`;
-						}
-						elementoCurrTimeVideo.textContent = "0" + currentMin + ":" + currentSec;
-					}
-				})
-			}
-		})
-	});
-
-	volumeSliderVideo.forEach ((elementoVideoSlideVolume, indexVideoSlideVolume) => {
-		elementoVideoSlideVolume.addEventListener('change', () => {
-			if(indexVideos == indexVideoSlideVolume) {
-				elementoVideos.volume = elementoVideoSlideVolume.value / 100;
-				if(elementoVideos.volume == 0) {
-					elementoVideos.muted = true;
-					volumeMuteIconVideo.forEach((elementoVolumeMuteVideo, indexVolumeMuteVideo) => {
-						if(indexVideos == indexVolumeMuteVideo){
-							elementoVolumeMuteVideo.classList.toggle("hide");
-						}	
-					})
-					volumeHighIconVideo.forEach((elementoVolumeHighVideo, indexVolumeHighVideo) => {
-						if(indexVideos == indexVolumeHighVideo){
-							elementoVolumeHighVideo.classList.toggle("hide");
-						}
-					})
-				}
-				else{
-					elementoVideos.muted = false;
-				}
-			}
-		})
-	});
-	
-	volumeMuteIconVideo.forEach((elementoVolumeMuteVideo, indexVolumeMuteVideo) => { //ver de nuevo esto, cuando modifico un volumen,se me modifica de todos
-		elementoVolumeMuteVideo.addEventListener("click", () => {
-
-			if(indexVideos == indexVolumeMuteVideo) {
-				volumeMuteIconVideo.forEach((elementoVolumeMuteVideo2, indexVolumeMuteVideo2) => {
-					if(indexVideos == indexVolumeMuteVideo2){
-						elementoVolumeMuteVideo2.classList.toggle("hide");
-					}	
-				})
-				volumeHighIconVideo.forEach((elementoVolumeHighVideo, indexVolumeHighVideo) => {
-					if(indexVideos == indexVolumeHighVideo){
-						elementoVolumeHighVideo.classList.toggle("hide");
-					}
-				})
-				elementoVideos.muted = false;
-				volumeSliderVideo.value = 100;
-				volumeSliderVideo.forEach ((elementoVideoSlideVolume, indexVideoSlideVolume) => {
-					if(indexVideos == indexVideoSlideVolume) {
-						elementoVideoSlideVolume.value = 100; // no tiene que ser 100 porque si tenia menos
-																  // tendria que volver a ese valor
-					}	
-					
-				})
-			}
-		})
-	});
-
-	volumeHighIconVideo.forEach((elementoVolumeHighVideo, indexVolumeHighVideo) => { //ver de nuevo esto, cuando modifico un volumen,se me modifica de todos
-		elementoVolumeHighVideo.addEventListener("click", () => {
-
-			if(indexVideos == indexVolumeHighVideo) {
-				volumeMuteIconVideo.forEach((elementoVolumeMuteVideo2, indexVolumeMuteVideo2) => {
-					if(indexVideos == indexVolumeMuteVideo2){
-						elementoVolumeMuteVideo2.classList.toggle("hide");
-					}	
-				})
-				volumeHighIconVideo.forEach((elementoVolumeHighVideo, indexVolumeHighVideo) => {
-					if(indexVideos == indexVolumeHighVideo){
-						elementoVolumeHighVideo.classList.toggle("hide");
-					}
-				})
-				elementoVideos.muted = true;
-				volumeSliderVideo.value = 0;
-
-				volumeSliderVideo.forEach ((elementoVideoSlideVolume, indexVideoSlideVolume) => {
-					if(indexVideos == indexVideoSlideVolume) {
-						elementoVideoSlideVolume.value = 0; // no tiene que ser 100 porque si tenia menos
-																  // tendria que volver a ese valor
-					}	
-					
-				})
-			}
-		})
-	});
-})		
-
-
-
+videos_json = [
+    {
+        "nombre_video": "Opening - Arco Aincrad",
+        "id_container_video": "aincradserie",
+        "src_video": "videos/temp-1/aincrad/opening/Sao-Crossing Field-Opening.mp4",
+        "final_duration": "01:29"
+    },
+    {
+        "nombre_video": "Opening - Arco Aincrad",
+        "id_container_video": "clipcrosing",
+        "src_video": "videos/temp-1/aincrad/opening/Sao-Crossing Field-Opening-Clip.mp4",
+        "final_duration": "04:07"
+    },
+    {
+        "nombre_video": "Opening - Arco Alfheim",
+        "id_container_video": "alfheimserie",
+        "src_video": "videos/temp-1/alfheim/opening/Sao-Innocence-Opening.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Opening - Arco Alfheim",
+        "id_container_video": "clipinnocense",
+        "src_video": "videos/temp-1/alfheim/opening/Sao-Innocence-Opening-Clip.mp4",
+        "final_duration": "05:02"
+    },
+    {
+        "nombre_video": "Ending - Arco Aincrad",
+        "id_container_video": "aincradending",
+        "src_video": "videos/temp-1/aincrad/ending/Sao-Yomesekai-Ending.mp4",
+        "final_duration": "01:30"
+    },
+    {
+        "nombre_video": "Ending - Arco Aincrad",
+        "id_container_video": "clipyumesekai",
+        "src_video": "videos/temp-1/aincrad/ending/Sao-Yomesekai-Ending-Clip.mp4",
+        "final_duration": "04:46"
+    },
+    {
+        "nombre_video": "Ending - Arco Alfheim",
+        "id_container_video": "alfheimending",
+        "src_video": "videos/temp-1/alfheim/ending/Sao-Overfly-Ending.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Ending - Arco Alfheim",
+        "id_container_video": "clipoverfly",
+        "src_video": "videos/temp-1/alfheim/ending/Sao-Overfly-Ending-Clip.mp4",
+        "final_duration": "04:26"
+    },
+    {
+        "nombre_video": "Opening - Arco Gun Gale Online",
+        "id_container_video": "ggoserie",
+        "src_video": "videos/temp-2/ggo/opening/Sao-Ignite-Opening.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Opening - Arco Gun Gale Online",
+        "id_container_video": "clipignite",
+        "src_video": "videos/temp-2/ggo/opening/Sao-Ignite-Opening-Clip.mp4",
+        "final_duration": "04:08"
+    },
+    {
+        "nombre_video": "Opening - Arco Calibur",
+        "id_container_video": "caliburserie",
+        "src_video": "videos/temp-2/calibur/opening/Sao-Courage-Opening.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Opening - Arco Mother`s Rosario",
+        "id_container_video": "rosarioserie",
+        "src_video": "videos/temp-2/mother/opening/Sao-Courage-Opening.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Opening - Arco Calibur",
+        "id_container_video": "clipcourage",
+        "src_video": "videos/temp-2/calibur/opening/Sao-Courage-Opening-Clip.mp4",
+        "final_duration": "04:24"
+    },
+    {
+        "nombre_video": "Ending - Arco Gun Gale Online",
+        "id_container_video": "ggoending",
+        "src_video": "videos/temp-2/ggo/ending/Sao-Startear-Ending.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Ending - Arco Gun Gale Online",
+        "id_container_video": "clipstartear",
+        "src_video": "videos/temp-2/ggo/ending/Sao-Startear-Opening-Clip.mp4",
+        "final_duration": "05:05"
+    },
+    {
+        "nombre_video": "Ending - Arco Calibur",
+        "id_container_video": "caliburending",
+        "src_video": "videos/temp-2/calibur/ending/Sao-Nomoretimemachine-Ending.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Ending - Arco Mother`s Rosario",
+        "id_container_video": "rosarioending",
+        "src_video": "videos/temp-2/mother/ending/Sao-Shirushi-Ending.mp4",
+        "final_duration": "01:43"
+    },
+    {
+        "nombre_video": "Ending - Arco Calibur",
+        "id_container_video": "clipnomoretime",
+        "src_video": "videos/temp-2/calibur/ending/Sao-Nomoretimemachine-Ending-Clip.mp4",
+        "final_duration": "01:51"
+    },
+    {
+        "nombre_video": "Ending - Arco Mother`s Rosario",
+        "id_container_video": "clipnomoretime2",
+        "src_video": "videos/temp-2/mother/ending/Sao-Shirushi-Ending-Clip.mp4",
+        "final_duration": "04:50"
+    },
+    {
+        "nombre_video": "Video - Film Ordinal Scale",
+        "id_container_video": "ordinalserie",
+        "src_video": "videos/ordinal/Lisa-Catch The Moment-Video.mp4",
+        "final_duration": "04:38"
+    },
+    {
+        "nombre_video": "Video Clip - Film Ordinal Scale",
+        "id_container_video": "clipcatch",
+        "src_video": "videos/ordinal/Lisa-Catch The Moment-Clip.mp4",
+        "final_duration": "04:45"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 1)",
+        "id_container_video": "alicizationseriep1",
+        "src_video": "videos/alicization/opening/1/Sao-Adamas-Opening.mp4",
+        "final_duration": "01:33"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 1)",
+        "id_container_video": "clipadamas",
+        "src_video": "videos/alicization/opening/1/Sao-Adamas-Opening-Clip.mp4",
+        "final_duration": "03:40"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 2)",
+        "id_container_video": "alicizationseriep2",
+        "src_video": "videos/alicization/opening/2/Sao-Resister-Opening.mp4",
+        "final_duration": "01:31"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 2)",
+        "id_container_video": "clipresister",
+        "src_video": "videos/alicization/opening/2/Sao-Resister-Opening-Clip.mp4",
+        "final_duration": "03:54"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 1)",
+        "id_container_video": "alicizationendingp1",
+        "src_video": "videos/alicization/ending/1/Sao-Airisu-Ending.mp4",
+        "final_duration": "01:27"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 1)",
+        "id_container_video": "clipiris",
+        "src_video": "videos/alicization/ending/1/Sao-Airisu-Ending-Clip.mp4",
+        "final_duration": "04:08"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 2)",
+        "id_container_video": "alicizationendingp2",
+        "src_video": "videos/alicization/ending/2/Sao-Forget-Me-Not-Ending.mp4",
+        "final_duration": "01:27"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 2)",
+        "id_container_video": "clipforgetmenot",
+        "src_video": "videos/alicization/ending/2/Sao-Forget-Me-Not-Ending-Clip.mp4",
+        "final_duration": "04:47"
+    },
+    {
+        "nombre_video": "Opening - Arco War Of Underworld (Part 1)",
+        "id_container_video": "underworldseriep1",
+        "src_video": "videos/underworld/opening/1/Sao-Resolution-Opening.mp4",
+        "final_duration": "01:32"
+    },
+    {
+        "nombre_video": "Opening - Arco War Of Underworld (Part 1)",
+        "id_container_video": "clipresolution",
+        "src_video": "videos/underworld/opening/1/Sao-Resolution-Opening-Clip.mp4",
+        "final_duration": "05:28"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 2)",
+        "id_container_video": "underworldseriep2",
+        "src_video": "videos/underworld/opening/2/Sao-Anima-Opening.mp4",
+        "final_duration": "01:32"
+    },
+    {
+        "nombre_video": "Opening - Arco Alicization (Part 2)",
+        "id_container_video": "clipanima",
+        "src_video": "videos/underworld/opening/2/Sao-Anima-Opening-Clip.mp4",
+        "final_duration": "04:45"
+    },
+    {
+        "nombre_video": "Ending - Arco War Of Underworld (Part 1)",
+        "id_container_video": "underworldendingp1",
+        "src_video": "videos/underworld/ending/1/Sao-Unlasting-Ending.mp4",
+        "final_duration": "01:29"
+    },
+    {
+        "nombre_video": "Ending - Arco War Of Underworld (Part 1)",
+        "id_container_video": "clipunlasting",
+        "src_video": "videos/underworld/ending/1/Sao-Unlasting-Ending-Clip.mp4",
+        "final_duration": "04:53"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 2)",
+        "id_container_video": "underworldendingp2",
+        "src_video": "videos/underworld/ending/2/Sao-Iwill-Ending.mp4",
+        "final_duration": "01:28"
+    },
+    {
+        "nombre_video": "Ending - Arco Alicization (Part 2)",
+        "id_container_video": "clipiwill",
+        "src_video": "videos/underworld/ending/2/Sao-Iwill-Ending-Clip.mp4",
+        "final_duration": "04:35"
+    },
+    {
+        "nombre_video": "Video - Film Progressive",
+        "id_container_video": "progressiveserie",
+        "src_video": "videos/progressive/opening/Eir-Aoi-Shinzou.mp4",
+        "final_duration": "03:16"
+    },
+    {
+        "nombre_video": "Video Clip - Film Progressive",
+        "id_container_video": "clipshinzou",
+        "src_video": "videos/progressive/opening/Eir-Aoi-Shinzou-Clip.mp4",
+        "final_duration": "03:57"
+    },
+    {
+        "nombre_video": "Video Ending - Film Progressive",
+        "id_container_video": "progressiveending",
+        "src_video": "videos/progressive/ending/Lisa-Yuke-Ending.mp4",
+        "final_duration": "03:45"
+    },
+    {
+        "nombre_video": "Video Clip Ending - Film Progressive",
+        "id_container_video": "clipyuke",
+        "src_video": "videos/progressive/ending/Lisa-Yuke-Ending-Clip.mp4",
+        "final_duration": "04:04"
+    }
+]
 
 //----------------------------   click de cada pj y despliega el cartel de info
 var contenedorEvento = document.querySelectorAll(".nombres-pj");
@@ -1270,7 +1410,6 @@ function eventoclickCerrar_1(e) {
 		if(true) {	
 			elementoCloseInfo.style.display = 'none';
 			container_body.style.overflowY = "visible";
-
 		}
 	});
 }
@@ -1294,3 +1433,13 @@ buttonsInfo.forEach(button => {
     delete activeSlide.dataset.active
   })
 })
+
+
+
+
+
+
+
+
+
+

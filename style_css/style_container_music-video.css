@@ -18,10 +18,6 @@
 	flex-direction: column;
 	box-shadow: 0px 0px 5px 0px var(--color_000);
 }
-#container-video-temp2{
-	width: 300px;
-	height: 262px;
-}
 
 
 
@@ -282,34 +278,20 @@
 
 
 /* -----------------------------------------------	descripcion del container video  ------------------------------------ */
-.container-video-spin, .container-video-spin2, .container-video-spin3, .container-video-spin3-otro,
-.container-video-spin4, .container-video-spin4-otro, .container-video-spin5, .container-video-spin6, .container-video-spin7, 
-.container-video-spin8, .container-video-spin9, .container-video-spin10 {
+.container-video-spin{
 	position: relative;
 	width: 100%;
 	height: 170px;
 	background-color: var(--color_d3d3d3);
 	z-index: 60;
-	background-size: cover;
-	background-repeat: no-repeat;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 }
-
-.container-video-spin {background-image: url(../imagenes/fondo-clip-video-op.png);}
-.container-video-spin2 {background-image: url(../imagenes/fondo-clip-video2-op.png);}
-.container-video-spin3 {background-image: url(../imagenes/fondo-clip-video3-op.png);}
-.container-video-spin3-otro {background-image: url(../imagenes/fondo-clip-video3-otro-op.png);}
-.container-video-spin4 {background-image: url(../imagenes/fondo-clip-video4-op.png);}
-.container-video-spin4-otro {background-image: url(../imagenes/fondo-clip-video4-otro-op.png);}
-.container-video-spin5 {background-image: url(../imagenes/fondo-clip-video5-op.png);}
-.container-video-spin6 {background-image: url(../imagenes/fondo-clip-video6-op.png);}
-.container-video-spin7 {background-image: url(../imagenes/fondo-clip-video7-op.png);}
-.container-video-spin8 {background-image: url(../imagenes/fondo-clip-video8-op.png);}
-.container-video-spin9 {background-image: url(../imagenes/fondo-clip-video9-op.png);}
-.container-video-spin10 {background-image: url(../imagenes/fondo-clip-video10-op.png);}
-
+.container-video-spin-bg{
+	position: absolute;
+	left: 0;
+}
 .nombre-video-aincrad {
 	background-color: var(--color_dbdbdb80);
 	border: 2px solid var(--color_000);
